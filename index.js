@@ -59,6 +59,10 @@ Test.prototype.assert = function(func) {
 
 // Execute the stuff
 Test.prototype.exec = function(success, error) {
+	if (!error) {
+		error = success;
+	}
+
 	var queue = this.queue;
 
 	if (!queue.length) {
