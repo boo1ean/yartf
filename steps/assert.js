@@ -5,7 +5,7 @@ var Assert = function(opt) {
 // Dirty trick
 var get_last_body = function(res) {
 	var keys = Object.keys(res);
-	return res[keys[keys.length - 1]];
+	return res[keys[keys.length - 1]].body;
 };
 
 Assert.prototype.exec = function(next) {
