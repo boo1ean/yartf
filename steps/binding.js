@@ -13,6 +13,7 @@ var create_request = function(req) {
 var create_response = function(res) {
 	return {
 		status: res.statusCode,
+		headers: res.headers,
 		body: JSON.parse(res.body)
 	};
 };
