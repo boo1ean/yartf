@@ -57,6 +57,12 @@ Test.prototype.assert = function(func) {
 	return this.push_step(new steps.Assert({ func: func }));
 };
 
+// Extend test queue with another queue
+Test.prototype.use = function(test) {
+	this.queue = this.queue.concat(test.queue);
+	return this;
+};
+
 // Execute the stuff
 Test.prototype.exec = function(success, error) {
 	if (!error) {
