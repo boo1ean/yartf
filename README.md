@@ -2,8 +2,9 @@
 
 Yet Another Rest Test Framework   
     
-`yartf` is simple http client helper for testing REST APIs it doesn't provide any 
-assertions.
+`yartf` is simple http client helper for testing REST APIs.
+    
+It doesn't provide any assertions.
 
 ## Installation
 
