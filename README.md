@@ -20,15 +20,29 @@ it('should contain 0 tickets', function(done) {
 	t('http://localhost:3000')
 		.get('/tickets')
 		.as('tickets')
-		.assert(function() {
+		.assert(function(res) {
 
 			// this.res.tickets === { status: 200, body: [] }
 
-			this.res.tickets.status.should.be(200);
-			this.res.tickets.body.length.should.be.exactly(0);
+			res.tickets.status.should.be(200);
+			res.tickets.body.length.should.be.exactly(0);
 		})
 		.exec(done, done);
-}):
+});
+```
+
+Shorthand for accessing last response body:
+
+```javascript
+t('http://localhost:3000')
+	.get('/tickets')
+	.as('tickets')
+	.assert(function(res, tickets) {
+
+		// tickets === res.tickets.body
+
+		tickets.length.should.be.exactly(0);
+	});
 ```
 
 ## Assertions

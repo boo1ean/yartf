@@ -1,6 +1,6 @@
 {
   "name": "yartf",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Yet Another Rest Test Framework",
   "main": "index.js",
   "scripts": {
