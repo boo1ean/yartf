@@ -1,5 +1,6 @@
 var request = require('request');
 var steps = require('./steps');
+var _ = require('lodash');
 
 var err = function(msg) {
 	console.error(msg);
