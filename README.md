@@ -21,8 +21,11 @@ it('should contain 0 tickets', function(done) {
 		.get('/tickets')
 		.as('tickets')
 		.assert(function() {
-			this.res.status.should.be(200);
-			this.res.body.tickets.length.should.be.exactly(0);
+
+			// this.res.tickets === { status: 200, body: [] }
+
+			this.res.tickets.status.should.be(200);
+			this.res.tickets.body.length.should.be.exactly(0);
 		})
 		.exec(done, done);
 }):
