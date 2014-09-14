@@ -1,6 +1,5 @@
 var request = require('request');
 var steps = require('./steps');
-var should = require('should');
 
 var err = function(msg) {
 	console.error(msg);
