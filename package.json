@@ -1,13 +1,13 @@
 {
   "name": "yartf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yet Another Rest Test Framework",
   "main": "index.js",
   "scripts": {
     "test": "npm test"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Egor Gumenyuk <boo1ean0807@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "request": "^2.42.0"
   }
