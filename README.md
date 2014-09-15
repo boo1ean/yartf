@@ -67,14 +67,14 @@ var remove_ticket_by_email = t('http://localhost:3000')
 Use previous response results in future requests via url templating
 
 ```javascript
-	return t(base_url)
-		.post('/tickets', { email: 'boooo@example.com' })
-		.as('ticket')
-		.get('/tickets/{{ticket.body.id}}')
-		.as('ticket_by_id')
-		.assert(function(res, ticket_by_unique_id) {
-			ticket_by_id.email.should.be.exactly('boooo@example.com');
-		});
+return t(base_url)
+	.post('/tickets', { email: 'boooo@example.com' })
+	.as('ticket')
+	.get('/tickets/{{ticket.body.id}}')
+	.as('ticket_by_id')
+	.assert(function(res, ticket_by_unique_id) {
+		ticket_by_id.email.should.be.exactly('boooo@example.com');
+	});
 ```
 
 ## Assertions
