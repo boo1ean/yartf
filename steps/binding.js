@@ -11,10 +11,16 @@ var create_request = function(req) {
 };
 
 var create_response = function(res) {
+	try {
+		var body = JSON.parse(res.body);
+	} catch (e) {
+		body = {};
+	}
+
 	return {
 		status: res.statusCode,
 		headers: res.headers,
-		body: JSON.parse(res.body)
+		body: body
 	};
 };
 
