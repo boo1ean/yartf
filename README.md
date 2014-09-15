@@ -12,6 +12,8 @@ It doesn't provide any assertions.
 
 ## Usage
 
+Make http get request, give alias to response results and make assertions on it
+
 ```javascript
 var should = require('should');
 var t = require('yartf');
@@ -31,6 +33,20 @@ it('should contain 0 tickets', function(done) {
 });
 ```
 
+Handle multiple request
+
+```javascript
+t('http://localhost:3000')
+	.get('/tickets').as('tickets')
+	.get('/users').as('users')
+	.get('/cars').as('cars')
+	.assert(function() {
+		(this.res.tickets.length === this.res.cars.length === this.res.users.length).should.be.ok;
+	})
+	.exec(done);
+```
+
+
 Shorthand for accessing last response body:
 
 ```javascript
@@ -42,7 +58,8 @@ t('http://localhost:3000')
 		// tickets === res.tickets.body
 
 		tickets.length.should.be.exactly(0);
-	});
+	})
+	.exec(done);
 ```
 
 Reuse test steps
@@ -61,7 +78,8 @@ var remove_ticket_by_email = t('http://localhost:3000')
 	.as('ticket_removal')
 	.assert(function(res, ticket_removal) {
 		res.ticket_removal.status.should.be(200);
-	}).exec(done);
+	})
+	.exec(done);
 ```
 
 Use previous response results in future requests via url templating
@@ -74,7 +92,8 @@ return t(base_url)
 	.as('ticket_by_id')
 	.assert(function(res, ticket_by_id) {
 		ticket_by_id.email.should.be.exactly('boooo@example.com');
-	});
+	})
+	.exec(done);
 ```
 
 ## Assertions
