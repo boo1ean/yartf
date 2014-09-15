@@ -45,6 +45,38 @@ t('http://localhost:3000')
 	});
 ```
 
+Reuse test steps
+
+```javascript
+var create_ticket = t('http://localhost:3000')
+	.post('/tickets', { email: 'booo@example.com' })
+	.as('ticket')
+	.assert(function(res, ticket) {
+		ticket.id.should.be.ok;
+	});
+
+var remove_ticket_by_email = t('http://localhost:3000')
+	.use(create_ticket)
+	.del('/tickets', { email: 'booo@example.com' })
+	.as('ticket_removal')
+	.assert(function(res, ticket_removal) {
+		res.ticket_removal.status.should.be(200);
+	}).exec(done);
+```
+
+Use previous response results in future requests via url templating
+
+```javascript
+	return t(base_url)
+		.post('/tickets', { email: 'boooo@example.com' })
+		.as('ticket')
+		.get('/tickets/{{ticket.body.id}}')
+		.as('ticket_by_id')
+		.assert(function(res, ticket_by_unique_id) {
+			ticket_by_id.email.should.be.exactly('boooo@example.com');
+		});
+```
+
 ## Assertions
 
 To make assertions use some of these beautiful assertion libraries: [should](https://www.npmjs.org/package/should), [expect](https://www.npmjs.org/package/expect), [assert](https://www.npmjs.org/package/assert)
