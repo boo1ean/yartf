@@ -72,7 +72,7 @@ return t(base_url)
 	.as('ticket')
 	.get('/tickets/{{ticket.body.id}}')
 	.as('ticket_by_id')
-	.assert(function(res, ticket_by_unique_id) {
+	.assert(function(res, ticket_by_id) {
 		ticket_by_id.email.should.be.exactly('boooo@example.com');
 	});
 ```
