@@ -29,7 +29,7 @@ it('should contain 0 tickets', function(done) {
 			res.tickets.status.should.be(200);
 			res.tickets.body.length.should.be.exactly(0);
 		})
-		.exec(done, done);
+		.exec(done);
 });
 ```
 
