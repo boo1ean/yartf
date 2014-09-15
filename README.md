@@ -40,8 +40,9 @@ t('http://localhost:3000')
 	.get('/tickets').as('tickets')
 	.get('/users').as('users')
 	.get('/cars').as('cars')
-	.assert(function() {
-		(res.tickets.length === res.cars.length === res.users.length).should.be.ok;
+	.assert(function(res) {
+		(res.tickets.length === res.cars.length &&
+		res.tickets.length === res.users.length).should.be.ok;
 	})
 	.exec(done);
 ```
