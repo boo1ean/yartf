@@ -61,8 +61,9 @@ Test.prototype.assert = function(func) {
 // Extend test queue with another queue
 Test.prototype.use = function(test) {
 	var ctx = this;
-	var queue = _.cloneDeep(test.queue).forEach(function(step) {
+	var queue = _.clone(test.queue).map(function(step) {
 		step.ctx = ctx;
+		return step;
 	});
 
 	this.queue = this.queue.concat(queue);
