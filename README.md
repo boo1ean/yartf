@@ -24,7 +24,7 @@ it('should contain 0 tickets', function(done) {
 		.as('tickets')
 		.assert(function(res) {
 
-			// this.res.tickets === { status: 200, body: [] }
+			// res.tickets === { status: 200, body: [] }
 
 			res.tickets.status.should.be(200);
 			res.tickets.body.length.should.be.exactly(0);
@@ -41,7 +41,7 @@ t('http://localhost:3000')
 	.get('/users').as('users')
 	.get('/cars').as('cars')
 	.assert(function() {
-		(this.res.tickets.length === this.res.cars.length === this.res.users.length).should.be.ok;
+		(res.tickets.length === res.cars.length === res.users.length).should.be.ok;
 	})
 	.exec(done);
 ```
