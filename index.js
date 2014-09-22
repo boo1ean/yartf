@@ -58,6 +58,21 @@ Test.prototype.assert = function(func) {
 	return this.push_step(new steps.Assert({ func: func }));
 };
 
+// Make some async assertions
+Test.prototype.assert_async = function(func) {
+	return this.push_step(new steps.AssertAsync({ func: func }));
+};
+
+// Same as assert (for better tests semantic)
+Test.prototype.step = function(func) {
+	return this.push_step(new steps.Assert({ func: func }));
+};
+
+// Same as assert_async (for better tests semantic)
+Test.prototype.step_async = function(func) {
+	return this.push_step(new steps.AssertAsync({ func: func }));
+};
+
 // Extend test queue with another queue
 Test.prototype.use = function(test) {
 	var ctx = this;

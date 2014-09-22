@@ -97,6 +97,21 @@ return t(base_url)
 	.exec(done);
 ```
 
+Async assertions
+
+```javascript
+t('http://localhost:3000')
+	.get('/tickets')
+	.as('tickets')
+	.assert_async(function(res, tickets, next) {
+		someAsyncStuff(function(result) {
+			tickets.length.should.be.equal(result.length);
+			next();
+		});
+	})
+	.exec(done);
+```
+
 ## Assertions
 
 To make assertions use some of these beautiful assertion libraries: [should](https://www.npmjs.org/package/should), [expect](https://www.npmjs.org/package/expect), [assert](https://www.npmjs.org/package/assert)
