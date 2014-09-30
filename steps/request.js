@@ -22,7 +22,8 @@ Request.prototype.exec = function(next) {
 		url: compose_url(ctx, this.opt.url),
 		method: this.opt.method,
 		qs: this.opt.method == 'GET' ? this.opt.body || null : null,
-		form: this.opt.method == 'POST' ? this.opt.body : null
+		form: this.opt.method == 'POST' ? this.opt.body : null,
+		jar: true
 	};
 
 	ctx._req.push(options);
