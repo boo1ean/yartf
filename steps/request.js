@@ -21,13 +21,13 @@ Request.prototype.debug = function(req, res, body) {
 		console.log(req);
 	}
 
-	if (this.opts.debug.indexOf('headers') != -1) {
+	if (this.opts.debug && this.opts.debug.length && this.opts.debug.indexOf('headers') != -1) {
 		console.log('\n------------Response Headers------------\n');
 		console.log(res.headers);
 		console.log();
 	}
 
-	if (this.opts.debug.indexOf('body') != -1) {
+	if (this.opts.debug && this.opts.debug.length && this.opts.debug.indexOf('body') != -1) {
 		console.log('\n------------Response Body------------\n');
 		console.log(res.body);
 	}
