@@ -21,10 +21,14 @@ Request.prototype.exec = function(next) {
 	var options = {
 		url: compose_url(ctx, this.opt.url),
 		method: this.opt.method,
-		qs: this.opt.method == 'GET' ? this.opt.body || null : null,
-		form: this.opt.method == 'POST' ? this.opt.body : null,
 		jar: true
 	};
+
+	if (this.opt.method == 'GET') {
+		options.qs = this.opt.body || null;
+	} else if (this.opt.method === 'POST' || this.opt.method === 'PUT') {
+		options.form = this.opt.body || null;
+	}
 
 	ctx._req.push(options);
 
