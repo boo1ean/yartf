@@ -116,6 +116,19 @@ t('http://localhost:3000')
 
 To make assertions use some of these beautiful assertion libraries: [should](https://www.npmjs.org/package/should), [expect](https://www.npmjs.org/package/expect), [assert](https://www.npmjs.org/package/assert)
 
+## Debug output
+
+You can start test in debug mode. You can log different parts of response data using `body`, `headers`:
+
+Will output `headers` and `body` of every request:
+```javascript
+t.debug = ['headers', 'body']
+
+t('http://localhost:3000')
+	.get('/users')
+	//...
+```
+
 # License
 
 The MIT License (MIT)

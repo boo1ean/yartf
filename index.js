@@ -7,8 +7,9 @@ var err = function(msg) {
 	return msg;
 }
 
-var Test = function(opt) {
-	this.base_url = opt.base_url;
+var Test = function(opts) {
+	this.base_url = opts.base_url;
+	this.debug = opts.debug;
 	this.queue = [];
 	this._req = [];
 	this._res = [];
@@ -21,7 +22,8 @@ Test.prototype.request = function(url, method, body) {
 	return this.push_step(new steps.Request({
 		url: url,
 		method: method,
-		body: body
+		body: body,
+		debug: this.debug
 	}));
 };
 
@@ -114,7 +116,9 @@ Test.prototype.exec = function(success, error) {
 };
 
 var create_test = function(base_url) {
-	return new Test({ base_url: base_url });
+	return new Test({ base_url: base_url, debug: create_test.debug });
 };
+
+create_test.debug = false;
 
 module.exports = create_test;
