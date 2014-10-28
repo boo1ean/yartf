@@ -36,12 +36,13 @@ Request.prototype.debug = function(req, res, body) {
 Request.prototype.exec = function(next) {
 	var ctx = this.ctx;
 	var self = this;
+	var opts = this.opts.opts || {};
 
-	var options = {
+	var options = _.extend({
 		url: compose_url(ctx, this.opts.url),
 		method: this.opts.method,
 		jar: true
-	};
+	}, opts);
 
 	if (this.opts.method == 'GET') {
 		options.qs = this.opts.body || null;

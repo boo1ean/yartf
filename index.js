@@ -23,25 +23,26 @@ Test.prototype.request = function(url, method, body) {
 		url: url,
 		method: method,
 		body: body,
-		debug: this.debug
+		debug: this.debug,
+		opts: opts
 	}));
 };
 
 // Different http request methods
-Test.prototype.get = function(url, query) {
-	return this.request(url, 'GET', query);
+Test.prototype.get = function(url, query, opts) {
+	return this.request(url, 'GET', query, opts);
 };
 
 Test.prototype.post = function(url, body) {
-	return this.request(url, 'POST', body);
+	return this.request(url, 'POST', body, opts);
 };
 
-Test.prototype.put = function(url, body) {
-	return this.request(url, 'PUT', body);
+Test.prototype.put = function(url, body, opts) {
+	return this.request(url, 'PUT', body, opts);
 };
 
-Test.prototype.del = function(url, body) {
-	return this.request(url, 'DELETE', body);
+Test.prototype.del = function(url, body, opts) {
+	return this.request(url, 'DELETE', body, opts);
 };
 
 // Give alias for response of previous step
