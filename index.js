@@ -33,7 +33,7 @@ Test.prototype.get = function(url, query, opts) {
 	return this.request(url, 'GET', query, opts);
 };
 
-Test.prototype.post = function(url, body) {
+Test.prototype.post = function(url, body, opts) {
 	return this.request(url, 'POST', body, opts);
 };
 
