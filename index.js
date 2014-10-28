@@ -18,7 +18,7 @@ var Test = function(opts) {
 };
 
 // Make http request
-Test.prototype.request = function(url, method, body) {
+Test.prototype.request = function(url, method, body, opts) {
 	return this.push_step(new steps.Request({
 		url: url,
 		method: method,
