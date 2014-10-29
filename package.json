@@ -1,6 +1,6 @@
 {
   "name": "yartf",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Yet Another Rest Test Framework",
   "main": "index.js",
   "repository": "git@github.com:boo1ean/yartf.git",

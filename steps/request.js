@@ -38,17 +38,19 @@ Request.prototype.exec = function(next) {
 	var self = this;
 	var opts = this.opts.opts || {};
 
-	var options = _.extend({
+	var options = {
 		url: compose_url(ctx, this.opts.url),
 		method: this.opts.method,
 		jar: true
-	}, opts);
+	};
 
 	if (this.opts.method == 'GET') {
 		options.qs = this.opts.body || null;
 	} else if (this.opts.method === 'POST' || this.opts.method === 'PUT') {
 		options.form = this.opts.body || null;
 	}
+
+	options = _.extend(options, opts);
 
 	ctx._req.push(options);
 
